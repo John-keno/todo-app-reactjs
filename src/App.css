@@ -23,6 +23,11 @@ body {
 .App {
   text-align: center;
 }
+.error{
+  display: flex;
+  transform: translateY(-2rem);
+  color: red;
+}
 
 h1 {
   color: #fff;
@@ -38,8 +43,10 @@ h1 {
 }
 
 .TodoForm {
+  display: flex;
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  flex: 1;
 }
 
 .todo-input {
@@ -47,8 +54,6 @@ h1 {
   background: none;
   border: 1px solid var(--primary);;
   padding: 0.5rem 1rem;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
   width: 300px;
   color: white;
 }
