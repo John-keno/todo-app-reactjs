@@ -17,7 +17,6 @@ export function TodoWrapper() {
       ...todos,
       { id: uuid(), task: todo, completed: false, isEditing: false },
     ]);
-    console.log(todos);
   }
 
   // Toggle the completed status of a todo
