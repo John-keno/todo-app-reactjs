@@ -5,6 +5,7 @@ import { faPenToSquare, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 export function Todo({ task, toggleCompleted, deleteTodo, editTodo }) {
   return (
     <div className="Todo">
+      
       <p
         onClick={function () {
           toggleCompleted(task.id);

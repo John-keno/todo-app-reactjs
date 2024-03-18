@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 * {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -9,12 +9,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-:root{
+:root {
   --primary: #1f395b;
 }
 
 body {
-  background: var(--primary);;
+  background: var(--primary);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +23,7 @@ body {
 .App {
   text-align: center;
 }
-.error{
+.error {
   display: flex;
   transform: translateY(-2rem);
   color: red;
@@ -52,7 +52,7 @@ h1 {
 .todo-input {
   outline: none;
   background: none;
-  border: 1px solid var(--primary);;
+  border: 1px solid var(--primary);
   padding: 0.5rem 1rem;
   width: 300px;
   color: white;
@@ -63,7 +63,7 @@ h1 {
 }
 
 .todo-btn {
-  background: var(--primary);;
+  background: var(--primary);
   color: #fff;
   border: none;
   padding: 0.55rem;
@@ -74,18 +74,23 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--primary);;
+  background: var(--primary);
   color: #fff;
   padding: 0.75rem 1rem;
   border-radius: 5px;
   margin-bottom: 1rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-
-.fa-trash-can, .fa-pen-to-square{
+.fa-trash-can,
+.fa-pen-to-square {
   margin: 0.5rem;
   cursor: pointer;
 }
+
 
 .incompleted {
   color: #fff;
@@ -97,9 +102,20 @@ h1 {
   text-decoration: line-through;
   cursor: pointer;
 }
+.completed::before {
+  content: "";
+  display: inline-block;
+  position: relative;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+  margin-right: 10px;
+}
 
 .edit-icon,
 .delete-icon {
   cursor: pointer;
 }
- 
