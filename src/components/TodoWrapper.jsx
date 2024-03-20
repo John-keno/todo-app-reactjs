@@ -14,18 +14,23 @@ export function TodoWrapper() {
   useEffect(() => {
     const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
     setTodos(savedTodos);
+    console.log("useEffect triggered");
   }, []);
 
   // Add a new todo
   function addTodo(todo) {
-    let newTodos = [...todos, {
-      id: uuid(),
-      task: todo,
-      completed: false,
-      isEditing: false,
-    }];
+    let newTodos = [
+      ...todos,
+      {
+        id: uuid(),
+        task: todo,
+        completed: false,
+        isEditing: false,
+      },
+    ];
     setTodos(newTodos);
-    localStorage.setItem("todos", JSON.stringify(todos));
+
+    localStorage.setItem("todos", JSON.stringify(newTodos));
   }
 
   // Toggle the completed status of a todo
