@@ -102,6 +102,19 @@ h1 {
   text-decoration: line-through;
   cursor: pointer;
 }
+.incompleted::before{
+  content: "";
+  display: inline-block;
+  position: relative;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 50%;
+  height: 7px;
+  width: 7px;
+  margin-right: 10px;
+}
+
 .completed::before {
   content: "";
   display: inline-block;
