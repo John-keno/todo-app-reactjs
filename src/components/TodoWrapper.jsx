@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TodoForm } from "./TodoForm";
 import { v4 as uuid } from "uuid";
 import { Todo } from "./Todo";
@@ -11,35 +11,39 @@ export function TodoWrapper() {
   // Initialize the state to manage the list of todos
   const [todos, setTodos] = useState([]);
 
+  useEffect(() => {
+    const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
+    setTodos(savedTodos);
+  }, []);
+
   // Add a new todo
   function addTodo(todo) {
-    setTodos([
-      ...todos,
-      { id: uuid(), task: todo, completed: false, isEditing: false },
-    ]);
+    let newTodos = [...todos, {
+      id: uuid(),
+      task: todo,
+      completed: false,
+      isEditing: false,
+    }];
+    setTodos(newTodos);
+    localStorage.setItem("todos", JSON.stringify(todos));
   }
 
   // Toggle the completed status of a todo
   function toggleCompleted(id) {
-    setTodos(
-      todos.map(function (todo) {
-        return todo.id === id
-          ? {
-              ...todo,
-              completed: !todo.completed,
-            }
-          : todo;
-      })
-    );
+    let updatedTodos = todos.map(function (todo) {
+      return todo.id === id ? { ...todo, completed: !todo.completed } : todo;
+    });
+    setTodos(updatedTodos);
+    localStorage.setItem("todos", JSON.stringify(updatedTodos));
   }
 
   // Remove a todo
   function deleteTodo(id) {
-    setTodos(
-      todos.filter(function (todo) {
-        return todo.id !== id;
-      })
-    );
+    let updatedTodos = todos.filter(function (todo) {
+      return todo.id !== id;
+    });
+    setTodos(updatedTodos);
+    localStorage.setItem("todos", JSON.stringify(updatedTodos));
   }
 
   // Toggle the edit status of a todo
@@ -53,13 +57,13 @@ export function TodoWrapper() {
 
   // Update the task of a todo
   function editTask(task, id) {
-    setTodos(
-      todos.map(function (todo) {
-        return todo.id === id
-          ? { ...todo, task, isEditing: !todo.isEditing }
-          : todo;
-      })
-    );
+    let updatedTodos = todos.map(function (todo) {
+      return todo.id === id
+        ? { ...todo, task, isEditing: !todo.isEditing }
+        : todo;
+    });
+    setTodos(updatedTodos);
+    localStorage.setItem("todos", JSON.stringify(updatedTodos));
   }
 
   // Render the list of todos
